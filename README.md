@@ -34,6 +34,10 @@ Yahoo Finance Task
 
 #### Удаление акций и портфеля
 
+![alt-text](https://github.com/includetasks/05.02.2016_4XXI/blob/master/readme/4-motion-drop-portf.gif)
+
+#### Редактирование данных портфеля
+
 ![alt-text](https://github.com/includetasks/05.02.2016_4XXI/blob/master/readme/5-motion-portfolio-editing.gif)
 
 Установка и запуск
