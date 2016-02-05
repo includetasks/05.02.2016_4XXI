@@ -1,0 +1,47 @@
+- provide(:title, 'Portfolios')
+
+.page-content
+  .mdl-grid.portfolios
+    .mdl-cell.mdl-cell--2-col
+    .mdl-cell.mdl-cell--8-col
+
+      div.portfolios__new-portfolio
+        = form_for @empty_portfolio, html: { class: 'new-portfolio__form' } do |f|
+          .mdl-textfield.mdl-js-textfield.new-portfolio__title-field
+            = f.text_field :title, class: 'mdl-textfield__input'
+            = f.label      :title, class: 'mdl-textfield__label'
+          span
+            = button_tag(type: 'submit', class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effec")
+              i.material-icons work
+
+      div.portfolios__portfolio-list
+
+        table { class='mdl-data-table mdl-js-data-table mdl-shadow--2dp portfolio-list__portfolios-table' }
+          thead
+            tr
+              th.portfolios-table__cell TITLE
+              th.portfolios-table__cell SYMBOLS
+              th.portfolios-table__cell COUNT
+              th.portfolios-table__cell ACTION
+          tbody
+            - @portfolios.each do |portfolio|
+
+              tr
+                td.portfolios-table__cell
+                  = link_to portfolio.title, portfolio_path(id: portfolio.id)
+                
+                td.portfolios-table__cell
+                  = portfolio.stock_list.join(', ')
+
+                td.portfolios-table__cell
+                  = portfolio.stock_count
+
+                td.portfolios-table__cell
+                  = link_to portfolio_path(id: portfolio.id) do
+                    i.material-icons visibility
+
+                  = link_to edit_portfolio_path(id: portfolio.id) do
+                    i.material-icons settings
+
+                  = link_to portfolio_path(id: portfolio.id), method: :delete do
+                    i.material-icons highlight_off

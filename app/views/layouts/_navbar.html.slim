@@ -1,0 +1,19 @@
+header.mdl-layout__header
+  .mdl-layout__header-row
+    span.mdl-layout-title= "YF - #{yield(:title)}"
+    .mdl-layout-spacer
+    button#navbar-reserved-menu.mdl-button.mdl-js-button.mdl-button--icon
+      i.material-icons
+        | more_vert
+    ul.mdl-menu.mdl-menu--bottom-right.mdl-js-menu.mdl-js-ripple-effect.micromenu[for="navbar-reserved-menu"]
+      li.mdl-menu__item.micromenu__item[disabled]
+        i.material-icons face
+        = current_user.email
+      li.mdl-menu__item.micromenu__item
+        = link_to portfolios_path do
+          i.material-icons work
+          | PORTFOLIOS
+      li.mdl-menu__item.micromenu__item
+        = link_to destroy_user_session_path, method: :delete do
+          i.material-icons exit_to_app
+          | EXIT

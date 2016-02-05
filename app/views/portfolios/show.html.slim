@@ -1,0 +1,47 @@
+- provide(:title, "Portfolio - #{@portfolio.title}")
+
+.page-content
+  .mdl-grid.portfolio-data
+    .mdl-cell.mdl-cell--4-col.mdl-cell--12-col-tablet.mdl-cell--12-col-phone
+      .mdl-grid.mdl-grid--no-spacing
+        .portfolio-data__title.mdl-cell.mdl-cell--4-col.mdl-cell--12-col-tablet.mdl-cell--12-col-desktop.mdl-color--white.mdl-shadow--2dp
+          div.mdl-typography--title
+            span= @portfolio.title
+
+        .portfolio-data__actions.mdl-cell.mdl-cell--4-col.mdl-cell--12-col-tablet.mdl-cell--12-col-desktop
+          div.portfolio-data__actions--centerize
+            button#portfolio-stock-form-shower.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-button--accent.portfolio-data__action-button
+              i.material-icons vertical_align_bottom
+              | Stock
+
+            button#portfolio-chart-generator.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-button--accent.portfolio-data__action-button
+              i.material-icons trending_up
+              | Graphicz
+
+        #stock-form-cell.mdl-cell.mdl-cell--4-col.mdl-cell--12-col-tablet.mdl-cell--12-col-desktop.portfolio-data__stock-form-cell
+          = form_for @stock, url: portfolio_stocks_path(portfolio_id: @portfolio.id), html: { class: 'portfolio-data__new-stock-form' } do |f|
+            .mdl-textfield.mdl-js-textfield.portfolio-data__symbol-field
+              = f.label      :symbol, class: 'mdl-textfield__label'
+              = f.text_field :symbol, class: 'mdl-textfield__input'
+            span
+              = f.submit 'ADD', class: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent', name: 'commit'
+
+        .portfolio-data__stock-list.mdl-cell.mdl-cell--4-col.mdl-cell--12-col-tablet.mdl-cell--12-col-desktop
+          table{ class='mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp portfolio-data__stock-table' }
+            thead
+              tr
+                th SYMBOL
+                th COUNT
+                th ACTION
+            tbody
+              - @portfolio.stocks.each do |stock|
+                tr{ data-symbol="#{stock.symbol}" }
+                  td.symbol-cell= stock.symbol
+                  td= stock.count
+                  td= link_to 'DELETE', portfolio_stock_path(portfolio_id: @portfolio.id, id: stock.id), method: :delete
+
+    .mdl-cell.mdl-cell--8-col.mdl-cell--12-col-tablet.mdl-cell-12-col-phone
+      .mdl-grid.mdl-grid--no-spacing
+        .mdl-cell.mdl-cell--12-col.mdl-color--white.mdl-shadow--2dp
+          div.portfolio-data__charts
+            div#portfolio-chart.portfolio-data-charts__container

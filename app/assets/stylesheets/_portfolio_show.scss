@@ -1,0 +1,52 @@
+.portfolio-data {
+  .portfolio-data__title {
+    padding:    8px;
+    text-align: center;
+  }
+  
+  .portfolio-data__actions {
+    display: flex;
+
+    .portfolio-data__actions--centerize {
+      margin:  0 auto;
+      padding: 10px;
+    }
+
+    .portfolio-data__action-button {
+      margin-left:  7px;
+      margin-right: 7px;
+    }
+  }
+
+  .portfolio-data__stock-form-cell {
+    display: none;
+
+    .portfolio-data__new-stock-form {
+      width:  270px;
+      margin: 0 auto;
+    }
+
+    .portfolio-data__symbol-field {
+      width: 200px;
+    }
+  }
+
+  .portfolio-data__stock-list {
+    .portfolio-data__stock-table {
+      width: 100%;
+      white-space: inherit;
+
+      th, td { text-align: center; }
+      td.symbol-cell { word-break: break-all; }
+    }
+  }
+
+  .portfolio-data__charts {
+    .portfolio-data-charts__container {
+      width:       100%;
+      height:      400px;
+      line-height: 400px;
+      text-align:  center;
+    }
+  }
+}

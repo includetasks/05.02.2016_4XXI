@@ -1,0 +1,15 @@
+.page-content
+  .mdl-grid.login-form-card
+    .mdl-cell.mdl-cell--12-col.mdl-card.mdl-shadow--2dp
+      .mdl-card__supporting-text
+        .mdl-typography--headline Forgot your password?
+        = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+          = devise_error_messages!
+          .login-form__field
+            .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+              = f.email_field :email, class: 'mdl-textfield__input'
+              = f.label :email, class: 'mdl-textfield__label'
+
+          .login-form__field.mdl-typography--text-right
+            = f.submit 'Send reset instructions', class: 'mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary', name: 'commit'
+        = render 'users/shared/links'

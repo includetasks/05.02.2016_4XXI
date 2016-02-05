@@ -1,0 +1,15 @@
+- provide(:title, 'Portfolio - Edit')
+
+.page-content
+  .mdl-grid.portfolio-edit
+    .mdl-cell.mdl-cell--2-col
+    .mdl-cell.mdl-cell--8-col
+
+      div
+        = form_for @portfolio, html: { class: 'portfolio-edit__form' } do |f|
+          .mdl-textfield.mdl-js-textfield.portfolio-edit__title-field
+            = f.text_field :title, class: 'mdl-textfield__input'
+            = f.label      :title, class: 'mdl-textfield__label'
+          span
+            = button_tag(type: 'submit', class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effec")
+              i.material-icons done_all

@@ -1,0 +1,15 @@
+doctype html
+html.mdl-js lang='en'
+  head
+    meta content='text/html; charset=UTF-8' http-equiv='Content-Type'
+    meta name='viewport' content='width=device-width, initial-scale=1.0'
+    title YahooFinanceTask
+    = stylesheet_link_tag    'application', media: 'all'
+    = Gon::Base.render_data
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+  body.mdl-base.mdl-color--grey-100.mdl-color-text--grey-700
+    .mdl-layout.mdl-js-layout.mdl-layout--fixed-header
+      = render 'layouts/navbar' if user_signed_in?
+      main.mdl-layout__content
+        = yield

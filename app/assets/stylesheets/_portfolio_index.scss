@@ -1,0 +1,24 @@
+.portfolios {
+  .portfolios__new-portfolio {
+    .new-portfolio__form {
+      margin:    0 auto;
+      max-width: 270px;
+      width:     270px;
+    }
+
+    .new-portfolio__title-field {
+      width: 200px;
+    }
+  }
+
+  .portfolios__portfolio-list {
+    .portfolio-list__portfolios-table {
+      width: 100%;
+      white-space: initial;
+
+      .portfolios-table__cell {
+        text-align: center;
+      }
+    }
+  }
+}

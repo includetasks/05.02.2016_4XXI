@@ -1,0 +1,44 @@
+.page-content
+  .mdl-grid.login-form-card
+    .mdl-cell.mdl-cell--12-col.mdl-card.mdl-shadow--2dp
+      .mdl-card__supporting-text
+        .mdl-typography--headline Edit User
+        = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+          = devise_error_messages!
+          .login-form__field
+            .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+              = f.text_field :name, class: 'mdl-textfield__input'
+              = f.label :name, class: 'mdl-textfield__label'
+
+          .login-form__field
+            .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+              = f.email_field :email, class: 'mdl-textfield__input'
+              = f.label :email, class: 'mdl-textfield__label'
+
+          .login-form__field
+            span Avatar
+            = f.file_field :user_avatar, accept: 'image/jpeg,image/gif,image/png'
+
+          - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+            div
+              | Currently waiting confirmation for:
+              = resource.unconfirmed_email
+
+          .login-form__field
+            .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+              = f.password_field :password, autocomplete: 'off', class: 'mdl-textfield__input'
+              = f.label :password, class: 'mdl-textfield__label'
+
+          .login-form__field
+            .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+              = f.label :password_confirmation, class: 'mdl-textfield__label'
+              = f.password_field :password_confirmation, autocomplete: 'off', class: 'mdl-textfield__input'
+
+          .login-form__field
+            .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+              = f.label :current_password, class: 'mdl-textfield__label'
+              = f.password_field :current_password, autocomplete: 'off', class: 'mdl-textfield__input'
+
+          .login-form__field.mdl-typography--text-right
+            = f.submit 'Update', class: 'mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary', name: 'commit'
+        = link_to 'Back', :back

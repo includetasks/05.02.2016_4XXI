@@ -1,0 +1,25 @@
+.page-content
+  .mdl-grid.login-form-card
+    .mdl-cell.mdl-cell--12-col.mdl-card.mdl-shadow--2dp
+      .mdl-card__supporting-text
+        .mdl-typography--headline Log in
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          .login-form__field
+            .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+              = f.email_field :email, autofocus: true, class: 'mdl-textfield__input'
+              = f.label :email, class: 'mdl-textfield__label'
+                | Email *
+          .login-form__field
+            .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+              = f.password_field :password, autocomplete: "off", class: 'mdl-textfield__input'
+              = f.label :password, class: 'mdl-textfield__label'
+                | Password *
+          - if devise_mapping.rememberable?
+            .login-form__field-remember
+              = f.label :remember_me, class: 'mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect'
+                = f.check_box :remember_me, class: 'mdl-checkbox__input'
+                span.mdl-checkbox__label Remember me
+          .login-form__field-submit.mdl-typography--text-right
+            = f.submit 'Log in', class: 'mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary', name: 'commit'
+        .login-form__shared-links
+          = render 'users/shared/links'
